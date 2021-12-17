@@ -15,13 +15,13 @@ jobs:
         id: spotify
         with:
           credentials: ${{ secrets.SPOTIFY_CREDENTIALS }}
-          playlistId: 1yhasvKTi8wJMmpt1mj57J # Folk Metal Playlist          
+          playlistId: 1yhasvKTi8wJMmpt1mj57J # Eric's Folk Metal Playlist          
           
       # Print info about a random song
-      - name: Get the output time
+      - name: Song Info
         run: |
           echo "The song is ${{ steps.spotify.outputs.song-name }} by ${{ steps.spotify.outputs.song-artist }}."
-          echo "Check it out here:  ${{ steps.spotify.outputs.song-url }}."
+          echo "Check it out here:  ${{ steps.spotify.outputs.song-url }}"
 
       - name: Hello world action step 2
         uses: ./.github/actions/action2 # Uses an action in the root directory
