@@ -1,21 +1,4 @@
-# Hello world docker action
-
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
-
-## Inputs
-
-## `who-to-greet`
-
-**Required** The name of the person to greet. Default `"World"`.
-
-## Outputs
-
-## `time`
-
-The time we greeted you.
-
-## Example usage
-
-uses: actions/hello-world-docker-action@v1
-with:
-  who-to-greet: 'Mona the Octocat'
+curl --request GET \
+  --url https://api.spotify.com/v1/playlists/1yhasvKTi8wJMmpt1mj57J/tracks \
+  --header 'Authorization: Bearer BQCv5gN5csITwcwAMWplEhYqTlPMTS9MbpKD2Nh4VQt6SK49gccyo6Cwlc3H5L2GeL5YOeTdaw45grkGctk' \
+  --header 'Content-Type: application/json'

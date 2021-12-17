@@ -8,23 +8,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Hello world action step
-        uses: ./.github/actions/action1  # Uses an action in the root directory
-        id: hello
+      - name: Get Song
+        uses: ./.github/actions/random-spotify-song-from-playlist 
+        id: spotify
         with:
-          who-to-greet: 'Mona the Octocat'
+          credentials: ${{ secrets.SPOTIFY_CREDENTIALS }}
+          playlistId: 1yhasvKTi8wJMmpt1mj57J # Folk Metal Playlist          
           
+      # Print info about a random song
+      - name: Get the output time
+        run: |
+          echo "The song is ${{ steps.spotify.outputs.song-name }} by ${{ steps.spotify.outputs.song-artist }}."
+          echo "Check it out here:  ${{ steps.spotify.outputs.song-url }}."
+
       - name: Hello world action step 2
         uses: ./.github/actions/action2 # Uses an action in the root directory
         id: hello2
         with:
           who-to-greet: 'Someone Else'
-          
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: |
-          echo "The time was ${{ steps.hello.outputs.time }}"
-          echo "The time was ${{ steps.hello2.outputs.time }}"
