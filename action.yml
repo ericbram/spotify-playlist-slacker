@@ -1,0 +1,25 @@
+# action.yml
+name: 'Random Song from Playlist'
+description: 'Gets a Random Spotify song from a specified playlist'
+inputs:
+  credentials:
+    description: 'base64-encoded client ID and Client Secret in the format <clientID>:<clientSecret>'
+    required: true
+    default: ''
+  playlistId:
+    description: 'The Spotify playlist ID'
+    required: true
+    default: ''
+outputs:
+  song-url: 
+    description: 'The URL of the random song'
+  song-name: 
+    description: 'The song name of the random song'
+  song-artist: 
+    description: 'The artist name of the random song'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.credentials }}
+    - ${{ inputs.playlistId }}
