@@ -1,4 +1,4 @@
-name: CI
+name: Spotify Random Song
 
 on:
   workflow_dispatch:
