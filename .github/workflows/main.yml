@@ -16,6 +16,15 @@ jobs:
         id: hello
         with:
           who-to-greet: 'Mona the Octocat'
+          
+      - name: Hello world action step 2
+        uses: ./.github/actions/action2 # Uses an action in the root directory
+        id: hello2
+        with:
+          who-to-greet: 'Someone Else'
+          
       # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: |
+          echo "The time was ${{ steps.hello.outputs.time }}"
+          echo "The time was ${{ steps.hello2.outputs.time }}"
