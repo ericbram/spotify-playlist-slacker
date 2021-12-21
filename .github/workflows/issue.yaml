@@ -1,0 +1,12 @@
+
+on:
+  issues:
+    types: [opened]
+
+# Workflow Jobs
+jobs:
+  gather-facts:
+    runs-on: ubuntu-latest
+    steps:
+      run: |
+        echo ${{ toJson(github.event.issue) }}
