@@ -2,6 +2,7 @@ name: Workflow B
 
 on:
   repository_dispatch:
+    types: [trigger-workflow-2]
 
 jobs:
   build:
