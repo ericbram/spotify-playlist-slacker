@@ -8,17 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2     
       
       - name: Trigger next workflow
         run: |
-          curl -H "Authorization: token ${{ github.token  }}" \
+          curl -H "Authorization: token ${{ secrets.REPO_PAT  }}" \
             -H 'Accept: application/vnd.github.everest-preview+json' \
             --request POST \
-            "https://api.github.com/repos/ericbram/spotify-playlist-slacker/dispatches" \
+            "${{ github.repository}}/dispatches" \
             -d '{"event_type": "trigger-workflow-2"}'
-
-      
+     
 #       - name: Trigger next workflow
 #         run: |
 #           curl -H "Authorization: token ${{ secrets.REPO_PAT  }}" \
