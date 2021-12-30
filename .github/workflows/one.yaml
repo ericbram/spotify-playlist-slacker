@@ -15,7 +15,7 @@ jobs:
           curl -H "Authorization: token ${{ secrets.REPO_PAT  }}" \
             -H 'Accept: application/vnd.github.everest-preview+json' \
             --request POST \
-            "${{ github.repository}}/dispatches" \
+            "https://api.github.com/repos/${{ github.repository}}/dispatches" \
             -d '{"event_type": "trigger-workflow-2"}'
      
 #       - name: Trigger next workflow
