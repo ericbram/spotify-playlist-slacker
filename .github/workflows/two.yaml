@@ -2,14 +2,11 @@ name: Workflow B
 
 on:
   repository_dispatch:
-    types: [trigger-workflow-2]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
       - name: hi
         run: echo "hi"     
