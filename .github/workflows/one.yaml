@@ -17,11 +17,3 @@ jobs:
             --request POST \
             "https://api.github.com/repos/${{ github.repository}}/dispatches" \
             -d '{"event_type": "trigger-workflow-2", "client_payload": {"development-image": "${{ github.SHA }}"}}'
-     
-#       - name: Trigger next workflow
-#         run: |
-#           curl -H "Authorization: token ${{ secrets.REPO_PAT  }}" \
-#             -H 'Accept: application/vnd.github.everest-preview+json' \
-#             --request POST \
-#             "https://api.github.com/repos/ericbram/spotify-playlist-slacker/dispatches" \
-#             -d '{"event_type": "trigger-workflow-2"}'
