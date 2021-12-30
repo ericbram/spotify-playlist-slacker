@@ -16,4 +16,4 @@ jobs:
             -H 'Accept: application/vnd.github.everest-preview+json' \
             --request POST \
             "https://api.github.com/repos/${{ github.repository}}/dispatches" \
-            -d '{"event_type": "trigger-workflow-2", "client_payload": {"development-image": "${{ github.SHA }}"}}'
+            -d '{"event_type": "secrel-complete", "client_payload": {"development-image": "${{ github.SHA }}"}}'
