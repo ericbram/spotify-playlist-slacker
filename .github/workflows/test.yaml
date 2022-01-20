@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: one
-        run: ecoh "starting"
+        run: echo "starting"
       - name: Send greeting
         if: ${{ !inputs.use-emoji }}
         run: echo "output"
