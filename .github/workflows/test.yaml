@@ -1,0 +1,19 @@
+name: boolean
+
+on:
+  workflow_dispatch:
+    inputs:
+      use-emoji:
+        type: boolean
+        description: Include 🎉🤣 emojis
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: one
+        run: ecoh "starting"
+      - name: Send greeting
+        if: ${{ !inputs.use-emoji }}
+        run: echo "output"
