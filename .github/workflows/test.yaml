@@ -16,4 +16,4 @@ jobs:
         run: echo "starting"
       - name: Send greeting
         if: inputs.use-emoji == false
-        run: echo "only run if false"
+        run: echo "${{inputs.use-emoji}}"
