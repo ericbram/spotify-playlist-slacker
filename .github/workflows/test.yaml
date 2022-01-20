@@ -15,5 +15,5 @@ jobs:
       - name: one
         run: echo "${{github.event.inputs.use-emoji}}"
       - name: Send greeting
-        if: github.event.inputs.use-emoji == "false"
+        if: github.event.inputs.use-emoji == 'false'
         run: echo "hi"
