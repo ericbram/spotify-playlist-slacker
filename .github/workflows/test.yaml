@@ -15,5 +15,5 @@ jobs:
       - name: one
         run: echo "starting"
       - name: Send greeting
-        if: ${{ !inputs.use-emoji }}
+        if: ! inputs.use-emoji
         run: echo "output"
