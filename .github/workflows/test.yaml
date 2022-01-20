@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: one
-        run: echo "starting"
+        run: echo "${{github.event.inputs.use-emoji}}"
       - name: Send greeting
         if: github.event.inputs.use-emoji == false
-        run: echo "${{github.event.inputs.use-emoji}}"
+        run: echo "hi"
