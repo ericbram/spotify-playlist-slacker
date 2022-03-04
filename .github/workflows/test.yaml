@@ -14,4 +14,4 @@ jobs:
         uses: ebram-va/driftctl-action@main
         with:
           version: 0.22.0
-          args: "--from 'tfstate://test.tfstate' --only-managed"
+          args: --from tfstate://test.tfstate --only-managed
