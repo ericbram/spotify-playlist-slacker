@@ -2,18 +2,15 @@ name: boolean
 
 on:
   workflow_dispatch:
-    inputs:
-      use-emoji:
-        type: boolean
-        description: Include 🎉🤣 emojis
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: one
-        run: echo "${{github.event.inputs.use-emoji}}"
-      - name: Send greeting
-        if: github.event.inputs.use-emoji == 'false'
-        run: echo "hi"
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run driftctl
+        uses: ebram-va/driftctl-action@v1
+        with:
+          version: 0.22.0
