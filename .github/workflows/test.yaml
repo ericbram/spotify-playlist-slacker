@@ -11,6 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run driftctl
-        uses: ebram-va/driftctl-action@v1
+        uses: ebram-va/driftctl-action@main
         with:
           version: 0.22.0
