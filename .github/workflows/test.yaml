@@ -11,7 +11,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run driftctl
-        uses: ebram-va/driftctl-action@main
+        uses: ebram-va/driftctl-action@map
         with:
           version: 0.22.0
-          args: --from tfstate://test.tfstate --only-managed
+          args: |
+            --from tfstate://test.tfstate
+            --only-managed
