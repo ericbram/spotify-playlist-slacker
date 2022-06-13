@@ -2,18 +2,19 @@ name: boolean
 
 on:
   workflow_dispatch:
+    inputs:
+      build_id:
+        required: true
+        type: string
+      deploy_target:
+        required: true
+        type: string
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Run driftctl
-        uses: ebram-va/driftctl-action@map
-        with:
-          version: 0.22.0
-          args: |
-            --from tfstate://test.tfstate
-            --only-managed
+        run: |
+          echo "${{ inputs.build_id }} - ${{github.event.inputs.deploy_target}}"
