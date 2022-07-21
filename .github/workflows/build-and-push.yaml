@@ -20,6 +20,7 @@ jobs:
         docker pull nginx:latest
         docker tag nginx:latest 367210624078.dkr.ecr.us-gov-west-1.amazonaws.com/rise8/nginx:latest
     - name: Login to Amazon ECR
-      uses: aws-actions/amazon-ecr-login@v1
+      run: |
+        aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 367210624078.dkr.ecr.us-gov-west-1.amazonaws.com
     - name: Build and push
       run: docker push 367210624078.dkr.ecr.us-gov-west-1.amazonaws.com/rise8/nginx:latest
