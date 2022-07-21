@@ -15,11 +15,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    - name: Pull image
+      run: |
+        docker pull nginx:latest
+        docker tag nginx:latest 367210624078.dkr.ecr.us-gov-west-1.amazonaws.com/rise8/nginx:latest
     - name: Login to Amazon ECR
       uses: aws-actions/amazon-ecr-login@v1
-
-    # - name: Build and push
-    #     uses: docker/build-push-action@v3
-    #     with:
-    #       push: true
-    #       tags: user/app:latest
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: 367210624078.dkr.ecr.us-gov-west-1.amazonaws.com/rise8/nginx:latest
