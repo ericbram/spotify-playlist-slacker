@@ -5,6 +5,8 @@ on:
 
 jobs:
   build:
+    env:
+      AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
