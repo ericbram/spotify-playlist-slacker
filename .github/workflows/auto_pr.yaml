@@ -14,5 +14,5 @@ jobs:
         
       - name: Create Draft PR
         run: |
-          # echo ${{ secrets.GH_PAT }} | gh auth login --with-token
+          echo ${{ secrets.GH_PAT }} | gh auth login --with-token
           gh pr create --fill --draft
