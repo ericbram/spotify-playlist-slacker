@@ -8,9 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: echo  ${{ github.event.ref }}
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.ref }}        
         
+      - name: Create Draft PR
+        run: |
+          # echo ${{ secrets.GH_PAT }} | gh auth login --with-token
+          gh pr create --fill --draft
