@@ -15,4 +15,4 @@ jobs:
       - name: Create Draft PR
         run: |
           echo ${{ secrets.GH_PAT }} | gh auth login --with-token
-          gh pr create --title "${{ github.event.ref }}" --draft
+          gh pr create --title "${{ github.event.ref }}" --body "" --draft
