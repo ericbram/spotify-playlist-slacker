@@ -1,4 +1,4 @@
-name: Workflow B
+name: Auto PR
 
 on:
   create:
@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.ref }}        
+          ref: ${{ github.event.ref }}
         
       - name: Create Draft PR
         run: |
           echo ${{ secrets.GH_PAT }} | gh auth login --with-token
-          gh pr create --fill --draft
+          gh pr create --title "${{ github.event.ref }}" --draft
