@@ -19,8 +19,9 @@ jobs:
           BRANCH_NAME=${{ github.event.ref }}
           if [ "${{ github.event_name }}" == "push" ] ; then
             BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})
+            # sleep in case this was called at the same time as a branch create
+            sleep 10s
           fi
-          sleep $((RANDOM % 10))
           echo ${{ secrets.GH_PAT }} | gh auth login --with-token
           PR_EXISTS=$(gh pr list --json headRefName | jq --arg branch "$BRANCH_NAME" '.[] | select(.headRefName=="$branch")')
           if [ -z "$PR_EXISTS" ] ; then          
