@@ -1,6 +1,7 @@
 name: Auto PR
 
 on:
+  push:
   create:
     branches:
 
@@ -12,7 +13,15 @@ jobs:
         with:
           ref: ${{ github.event.ref }}
         
-      - name: Create Draft PR
+#         if:  github.event_name == 'create'
+      - name: Create Draft PR from new branch
         run: |
           echo ${{ secrets.GH_PAT }} | gh auth login --with-token
           gh pr create --title "${{ github.event.ref }}" -F ./pull_request_template.md --draft
+          
+#       - name: Create Draft PR from existing branch
+#         if:  github.event_name == 'push'
+#         run: |
+#           echo ${{ secrets.GH_PAT }} | gh auth login --with-token
+#           gh pr list --json headRefName
+#           gh pr create --title "${{ github.event.ref }}" -F ./pull_request_template.md --draft
