@@ -25,7 +25,7 @@ jobs:
           echo ${{ secrets.GH_PAT }} | gh auth login --with-token
           gh pr list
           echo "---"
-          ggh pr list --json headRefName
+          gh pr list --json headRefName
           echo "---"
           gh pr list --json headRefName | jq '.[]'
           echo "---"
