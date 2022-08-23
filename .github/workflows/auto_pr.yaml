@@ -21,6 +21,7 @@ jobs:
             BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})
           fi
           
+          echo ${{ secrets.GH_PAT }} | gh auth login --with-token
           PR_EXISTS=$(gh pr list --json headRefName | jq --arg branch "$BRANCH_NAME" '.[] | select(.headRefName=="$branch")')
           if [ -z "$PR_EXISTS" ] ; then          
             gh pr create --title "$BRANCH_NAME" -F ./pull_request_template.md --draft
