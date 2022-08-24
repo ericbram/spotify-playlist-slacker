@@ -31,7 +31,7 @@ jobs:
           echo "---"
           gh pr list --json headRefName | jq --arg branch "$BRANCH_NAME" '.[] | select(.headRefName=="$branch")'
           echo "---"
-          PR_EXISTS=$(gh pr list --json headRefName | jq --arg branch "$BRANCH_NAME" '.[] | select(.headRefName=="$branch")')
+          PR_EXISTS=$(gh pr list --json headRefName | jq --arg branch "$BRANCH_NAME" '.[] | select(.headRefName==$branch)')
           if [ -z "$PR_EXISTS" ] ; then          
             gh pr create --title "$BRANCH_NAME" -F ./pull_request_template.md --draft
           fi
